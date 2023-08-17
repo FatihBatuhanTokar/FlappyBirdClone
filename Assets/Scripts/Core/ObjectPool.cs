@@ -54,7 +54,7 @@ namespace Script.Core
                 newObj.transform.position = new Vector2(spawnPosition, newObj.transform.position.y);
 
             }
-            spawnPosition += 2.88f;
+            spawnPosition += 2.89f;
         }
 
         public void ReturnObjectToPool(GameObject obj)
