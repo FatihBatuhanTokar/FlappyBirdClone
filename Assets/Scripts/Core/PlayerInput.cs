@@ -16,16 +16,17 @@ namespace Script.Core
         void Update()
         {
 
-            if (Input.GetMouseButtonDown(0)) // Kullanýcý ekrana tikladiðinda calisacak yöntemi cagirir
+            if (Input.GetMouseButtonDown(0)) // Kullan?c? ekrana tikladi?inda calisacak y?ntemi cagirir
             {
-                if (gameStateController.currentGameState==GameState.GameNotstarted)
+                if (gameStateController.CurrentGameState==GameState.GameNotstarted)
                 {
                     gameStateController.SetGameState(GameState.GameStarted);
+                    
                 }
                 OnClick();
             }
         }
-        void OnClick() // Kullanýcý ekrana tikladiðinda abonelere haber veren  yöntem
+        void OnClick() // Kullan?c? ekrana tikladi?inda abonelere haber veren  y?ntem
         {
             OnClicked?.Invoke();
         }

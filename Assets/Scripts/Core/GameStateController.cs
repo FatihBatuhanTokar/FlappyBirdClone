@@ -12,17 +12,17 @@ namespace Script.Core
     }
     public class GameStateController : MonoBehaviour
     {
-        public GameState currentGameState;
+        public GameState CurrentGameState { get; private set; }
         public event Action<GameState> OnGameStateChanged;
         
         void Awake()
         {
-            currentGameState = GameState.GameNotstarted;
+            SetGameState(GameState.GameNotstarted);
         }
 
         public void SetGameState(GameState gameState)
         {
-            currentGameState = gameState;
+            CurrentGameState = gameState;
             OnGameStateChanged?.Invoke(gameState);
         }
 
