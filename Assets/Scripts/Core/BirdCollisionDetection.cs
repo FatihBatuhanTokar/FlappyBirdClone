@@ -10,7 +10,8 @@ namespace Script.Core
         public event Action OnPipePassed;
        
         bool isPass = true;
-       
+
+        bool isGameOver = false;
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.transform.CompareTag("Point") && isPass)
@@ -21,7 +22,13 @@ namespace Script.Core
                 Invoke("TriggerSet", .5f);
             }
         }
-
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.transform.CompareTag("Obstacle"))
+            {
+                Debug.Log("GameOver");
+            }
+        }
         void TriggerSet()
         {
             isPass = true;

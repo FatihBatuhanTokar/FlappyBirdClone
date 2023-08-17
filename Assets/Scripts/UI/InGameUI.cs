@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace Script.Core
+using Script.Core;
+namespace Script.UI
 {
     public class InGameUI : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        GameStateController gameStateController;
+        private void Awake()
         {
-        
+            gameStateController = FindObjectOfType<GameStateController>();
+            gameStateController.OnGameStateChanged += OnPipePass;
         }
 
-        // Update is called once per frame
-        void Update()
+        void OnPipePass(GameState gameState)
         {
-        
+            Debug.Log("Puan yazildi UI");
         }
     }
 }
