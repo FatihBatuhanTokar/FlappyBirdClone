@@ -11,7 +11,11 @@ namespace Script.Core
        
         bool isPass = true;
 
-        bool isGameOver = false;
+        GameStateController gameStateController;
+        private void Awake()
+        {
+            gameStateController = FindObjectOfType<GameStateController>();
+        }
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.transform.CompareTag("Point") && isPass)
@@ -22,10 +26,12 @@ namespace Script.Core
                 Invoke("TriggerSet", .5f);
             }
         }
-        private void OnCollisionEnter(Collision collision)
+       
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.transform.CompareTag("Obstacle"))
             {
+                gameStateController.SetGameState(GameState.Failed);
                 Debug.Log("GameOver");
             }
         }

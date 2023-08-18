@@ -8,9 +8,9 @@ namespace Script.Core
         [SerializeField] float pipeDistance;
         [SerializeField] Vector3 firstPipeStartPoint;
         BirdCollisionDetection birdCollisionDetection;
-        public List<Transform> pipes;
+        public List<Pipe> pipes;
         public GameObject pipePrefab;
-        bool isPass=true;
+ 
         void Start()
         {
             InitializePool();
@@ -20,28 +20,27 @@ namespace Script.Core
         public void OnPipePass()
         {
           
-            Transform backPipe = pipes[0];
+            Pipe backPipe = pipes[0];
             foreach (var pipe in pipes)
             {
-                if (pipe.position.x <= backPipe.position.x)
+                if (pipe.transform.position.x <= backPipe.transform.position.x)
                 {
-                    Debug.Log("New Pipe");
                     backPipe = pipe;
                 }
             }
-            backPipe.position = backPipe.position + Vector3.right * pipeDistance * pipes.Count;
-            backPipe.GetComponent<Pipe>().SetPipePositions();
-            isPass = true;
+            backPipe.transform.position = backPipe.transform.position + Vector3.right * pipeDistance * pipes.Count;
+            backPipe.SetPipePositions();
         }
         void InitializePool()
         {
 
             for (int i = 0; i < 10; i++)
             {
-                GameObject newPipe = Instantiate(pipePrefab);
-                newPipe.transform.position = firstPipeStartPoint + Vector3.right * i * pipeDistance;
-                pipes.Add(newPipe.transform);
-                newPipe.GetComponent<Pipe>().SetPipePositions();
+                GameObject newPipeObj = Instantiate(pipePrefab);
+                newPipeObj.transform.position = firstPipeStartPoint + Vector3.right * i * pipeDistance;
+                Pipe newPipe = newPipeObj.GetComponent<Pipe>();
+                pipes.Add(newPipe);
+                newPipe.SetPipePositions();
             }
 
         }

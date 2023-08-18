@@ -7,7 +7,6 @@ namespace Script.Core
     public class PlayerInput : MonoBehaviour
     {
         public event Action OnClicked;
-        public event Action OnGameStarted;
         GameStateController gameStateController;
         private void Awake()
         {

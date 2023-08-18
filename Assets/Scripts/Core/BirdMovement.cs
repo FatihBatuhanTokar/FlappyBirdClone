@@ -1,25 +1,21 @@
 using UnityEngine;
-
 namespace Script.Core
 {
     public class BirdMovement : MonoBehaviour
     {
         public float jumpForce;
         public float moveSpeed;
-
         Rigidbody2D rb;
         PlayerInput playerInput;
         GameStateController gameStateController;
-        Animator anim;
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             playerInput = FindObjectOfType<PlayerInput>();
             gameStateController = FindObjectOfType<GameStateController>();
-            anim = GetComponent<Animator>();
             playerInput.OnClicked += JumpForce;
-            gameStateController.OnGameStateChanged += GameStart;
+            gameStateController.OnGameStateChanged += OnGameStateChange;
         }
         void FixedUpdate()
         {
@@ -42,15 +38,17 @@ namespace Script.Core
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-
-        void GameStart(GameState gameState)
+        void OnGameStateChange(GameState gameState)
         {
-            if (gameState==GameState.GameStarted)
+            switch (gameState)
             {
-                anim.SetTrigger("Fly");
-                rb.constraints = RigidbodyConstraints2D.None;
+                case GameState.GameStarted:
+                    rb.constraints = RigidbodyConstraints2D.None;
+                    break;
+                case GameState.Failed:
+                    rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                    break;
             }
-           
         }
     }
 }
