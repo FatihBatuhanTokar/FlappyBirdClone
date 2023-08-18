@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Script.Core;
 namespace Script.UI
@@ -7,15 +5,32 @@ namespace Script.UI
     public class InGameUI : MonoBehaviour
     {
         GameStateController gameStateController;
+        [SerializeField] GameObject InGameUIPanel;
+        
         private void Awake()
         {
             gameStateController = FindObjectOfType<GameStateController>();
-            gameStateController.OnGameStateChanged += OnPipePass;
+            gameStateController.OnGameStateChanged += OnGameStageChange;
         }
 
-        void OnPipePass(GameState gameState)
+        void OnGameStageChange(GameState gameState)
         {
-            Debug.Log("Puan yazildi UI");
+            switch (gameState)
+            {
+                case GameState.GameNotstarted:
+                    Debug.Log("InGameUIPanel is not active");
+                    InGameUIPanel.SetActive(false);
+                    break;
+                case GameState.GameStarted:
+                    Debug.Log("InGameUIPanel is active");
+                    InGameUIPanel.SetActive(true);
+                    break;
+                case GameState.Failed:
+                    gameStateController.OnGameStateChanged -= OnGameStageChange;
+                    InGameUIPanel.SetActive(false);
+                    Debug.Log("InGameUIPanel is not active");
+                    break;
+            }
         }
     }
 }

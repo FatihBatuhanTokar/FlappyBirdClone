@@ -1,21 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
+using Script.Core;
 using UnityEngine;
 
-namespace Script.Core
+namespace Script.UI
 {
     public class EndGameUI : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        GameStateController gameStateController;
+        [SerializeField] GameObject EndGameUIPanel;
+
+        private void Awake()
         {
-        
+            gameStateController = FindObjectOfType<GameStateController>();
+            gameStateController.OnGameStateChanged += OnGameStageChange;
         }
 
-        // Update is called once per frame
-        void Update()
+        void OnGameStageChange(GameState gameState)
         {
-        
+            switch (gameState)
+            {
+                case GameState.GameNotstarted:
+                    Debug.Log("EndGameUIPanel is not active");
+                    EndGameUIPanel.SetActive(false);
+                    break;
+                case GameState.GameStarted:
+                    Debug.Log("EndGameUIPanel is active");
+                    break;
+                case GameState.Failed:
+                    Debug.Log("EndGameUIPanel is not active");
+                    EndGameUIPanel.SetActive(true);
+                    break;
+            }
         }
     }
 }
+
