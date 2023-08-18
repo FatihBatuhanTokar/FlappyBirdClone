@@ -9,7 +9,7 @@ namespace Script.Score
 
         void Start()
         {
-            SetHighScore(-1);
+            SetHighScore(0);
         }
 
         // Update is called once per frame
