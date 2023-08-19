@@ -10,7 +10,7 @@ namespace Script.Core
         BirdCollisionDetection birdCollisionDetection;
         public List<Pipe> pipes;
         public GameObject pipePrefab;
- 
+        int poolStartCounter;
         void Start()
         {
             InitializePool();
@@ -19,7 +19,8 @@ namespace Script.Core
         }
         public void OnPipePass()
         {
-          
+            poolStartCounter += 1;
+            if (poolStartCounter < 2) return;
             Pipe backPipe = pipes[0];
             foreach (var pipe in pipes)
             {

@@ -46,7 +46,9 @@ namespace Script.Core
                     rb.constraints = RigidbodyConstraints2D.None;
                     break;
                 case GameState.Failed:
-                    rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                    playerInput.OnClicked -= JumpForce;
+                    gameStateController.OnGameStateChanged -= OnGameStateChange;
+                    rb.constraints = RigidbodyConstraints2D.FreezePositionX;
                     break;
             }
         }
