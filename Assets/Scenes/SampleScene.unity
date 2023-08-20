@@ -195,7 +195,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 688c88cae7ac5db4d9d6897d1fc4a183, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -437,8 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351945a6d0546424aa644d7c61a0f4b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!68 &473381671
-EdgeCollider2D:
+--- !u!61 &473381671
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -451,25 +451,18 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.14560914, y: 0.06443471}
-  - {x: 0.017372847, y: 0.12717377}
-  - {x: 0.10506469, y: 0.07802422}
-  - {x: 0.1295672, y: 0.009603344}
-  - {x: 0.16786814, y: -0.017078932}
-  - {x: 0.17113435, y: -0.037139073}
-  - {x: 0.124218464, y: -0.09909381}
-  - {x: 0.03303045, y: -0.09888362}
-  - {x: 0.031985283, y: -0.11743841}
-  - {x: -0.06922728, y: -0.11897224}
-  - {x: -0.16596079, y: -0.041150585}
-  - {x: -0.17016143, y: -0.0037960075}
-  - {x: -0.13236272, y: 0.06946543}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,7 +1008,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: b83015a37a488dd409deb76c657050c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1300,7 +1293,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 1185a898a1d19b74e90b08948f8649ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
