@@ -18,15 +18,15 @@ namespace Script.UI
             {
                 case GameState.GameNotstarted:
                     StartGameUIPanel.SetActive(true);
-                    Debug.Log("Oyun Baslamadi UI");
+                   
                     break;
                 case GameState.GameStarted:
-                    Debug.Log("Oyun Basladi UI");
+               
                     StartGameUIPanel.SetActive(false);
                     gameStateController.OnGameStateChanged -= OnGameStageChange;
                     break;
                 case GameState.Failed:
-                    Debug.Log("Oyun Bitti UI");
+                  
                     break;
             }
         }

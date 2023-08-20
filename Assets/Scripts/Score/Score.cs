@@ -1,13 +1,15 @@
 using Script.Core;
 using UnityEngine;
-
-namespace Script.Score
+using System;
+namespace Script.Scores
 {
     public class Score : MonoBehaviour
     {
         public int ScoreCounter { get; private set; }
 
         BirdCollisionDetection birdCollisionDetection;
+
+        public event Action OnScored;
         private void Awake()
         {
             birdCollisionDetection = FindObjectOfType<BirdCollisionDetection>();
@@ -18,6 +20,7 @@ namespace Script.Score
         void OnScore()
         {
             ScoreCounter += 1;
+            OnScored?.Invoke();
             Debug.Log(ScoreCounter);
         }
     }

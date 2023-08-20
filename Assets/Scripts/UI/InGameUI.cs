@@ -18,17 +18,17 @@ namespace Script.UI
             switch (gameState)
             {
                 case GameState.GameNotstarted:
-                    Debug.Log("InGameUIPanel is not active");
+                   
                     InGameUIPanel.SetActive(false);
                     break;
                 case GameState.GameStarted:
-                    Debug.Log("InGameUIPanel is active");
+                   
                     InGameUIPanel.SetActive(true);
                     break;
                 case GameState.Failed:
                     gameStateController.OnGameStateChanged -= OnGameStageChange;
                     InGameUIPanel.SetActive(false);
-                    Debug.Log("InGameUIPanel is not active");
+                   
                     break;
             }
         }

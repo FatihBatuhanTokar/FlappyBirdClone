@@ -1,26 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Script.Core;
 
-namespace Script.Score
+namespace Script.Scores
 {
     public class HighScore : MonoBehaviour
     {
-
-        void Start()
+        Score score;
+        private void Awake()
         {
-            SetHighScore(0);
+            if (!PlayerPrefs.HasKey("HighScore"))
+            {
+                print("sssss");
+                PlayerPrefs.SetInt("HighScore", 0);
+            }
+            score = FindObjectOfType<Score>();
+            score.OnScored += SetHighScore;
+           
         }
-
-        // Update is called once per frame
-        void Update()
+        void SetHighScore()
         {
-        
-        }
-
-        public void SetHighScore(int Score)
-        {
-            PlayerPrefs.SetInt("HighScore", Mathf.Max(0,PlayerPrefs.GetInt("HighScore"), Score));
+            PlayerPrefs.SetInt("HighScore", Mathf.Max(score.ScoreCounter, PlayerPrefs.GetInt("HighScore")));
             Debug.Log(PlayerPrefs.GetInt("HighScore"));
         }
     }

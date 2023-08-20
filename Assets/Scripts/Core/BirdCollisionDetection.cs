@@ -22,7 +22,7 @@ namespace Script.Core
             {
                 isPass = false;
                 OnPipePassed?.Invoke();
-                Debug.Log("Puan alindi");
+              
                 Invoke("TriggerSet", .5f);
             }
         }
@@ -32,7 +32,7 @@ namespace Script.Core
             if (collision.transform.CompareTag("Obstacle"))
             {
                 gameStateController.SetGameState(GameState.Failed);
-                Debug.Log("GameOver");
+              
             }
         }
         void TriggerSet()

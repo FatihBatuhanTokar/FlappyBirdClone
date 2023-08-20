@@ -19,14 +19,14 @@ namespace Script.UI
             switch (gameState)
             {
                 case GameState.GameNotstarted:
-                    Debug.Log("EndGameUIPanel is not active");
+                   
                     EndGameUIPanel.SetActive(false);
                     break;
                 case GameState.GameStarted:
-                    Debug.Log("EndGameUIPanel is active");
+                   
                     break;
                 case GameState.Failed:
-                    Debug.Log("EndGameUIPanel is not active");
+                  
                     EndGameUIPanel.SetActive(true);
                     break;
             }
