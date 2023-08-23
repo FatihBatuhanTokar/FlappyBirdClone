@@ -10,6 +10,7 @@ namespace Script.UI
         Score score;
         private void Awake()
         {
+            HighScoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
             score = FindObjectOfType<Score>();
             score.OnScored += SetScoreText;
         }

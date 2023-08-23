@@ -8,6 +8,7 @@ namespace Script.Core
     {
         public event Action OnClicked;
         GameStateController gameStateController;
+        [SerializeField] KeyCode jumpKey;
         private void Awake()
         {
             gameStateController = FindObjectOfType<GameStateController>();
@@ -15,7 +16,7 @@ namespace Script.Core
         void Update()
         {
 
-            if (Input.GetMouseButtonDown(0)) // Kullan?c? ekrana tikladi?inda calisacak y?ntemi cagirir
+            if (Input.GetKeyDown(jumpKey)) // Kullan?c? ekrana tikladi?inda calisacak y?ntemi cagirir
             {
                 if (gameStateController.CurrentGameState==GameState.GameNotstarted)
                 {

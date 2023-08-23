@@ -7,12 +7,12 @@ namespace Script.Scores
     {
         public int ScoreCounter { get; private set; }
 
-        BirdCollisionDetection birdCollisionDetection;
+        public BirdCollisionDetection birdCollisionDetection;
 
         public event Action OnScored;
         private void Awake()
         {
-            birdCollisionDetection = FindObjectOfType<BirdCollisionDetection>();
+            //birdCollisionDetection = FindObjectOfType<BirdCollisionDetection>();
             birdCollisionDetection.OnPipePassed += OnScore;
 
         }
