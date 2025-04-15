@@ -31,8 +31,9 @@ namespace Script.Core
         {
             if (collision.transform.CompareTag("Obstacle"))
             {
+                if (gameStateController.CurrentGameState == GameState.Failed) return;
                 gameStateController.SetGameState(GameState.Failed);
-              
+                AudioManager.Instance.PlaySound("SerdarFinal");
             }
         }
         void TriggerSet()

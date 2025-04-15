@@ -23,11 +23,13 @@ namespace Script.Core
                     gameStateController.SetGameState(GameState.GameStarted);
                     
                 }
+                if (gameStateController.CurrentGameState == GameState.Failed) return;
                 OnClick();
             }
         }
         void OnClick() // Kullan?c? ekrana tikladi?inda abonelere haber veren  y?ntem
         {
+            AudioManager.Instance.PlaySound("Serdar");
             OnClicked?.Invoke();
         }
        
